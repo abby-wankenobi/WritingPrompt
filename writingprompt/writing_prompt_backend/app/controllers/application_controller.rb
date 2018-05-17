@@ -36,6 +36,7 @@ class ApplicationController < ActionController::API
     logged_in?
   end
 
+
   private
 
   def jwt_secret_key

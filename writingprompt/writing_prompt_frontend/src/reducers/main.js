@@ -4,14 +4,16 @@ const defaultState = {
 
 export default function mainReducer (state=defaultState, action){
   switch(action.type){
-    case "SIGNUP_USER":
+    case "LOGIN_USER":
       return {
         ...state, auth: action.payload
       }
-    case "LOGIN_USER":
+    case "SAVE_AUTH":
       return {
-        ...state, currentUser: action.payload
+        ...state, auth: action.payload
       }
+    case "LOGOUT":
+      return defaultState
     default:
       return state
   }

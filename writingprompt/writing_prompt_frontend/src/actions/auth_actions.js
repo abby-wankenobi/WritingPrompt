@@ -5,7 +5,7 @@ const headers = {
 
 export function setAuth(username, password) {
   return (dispatch) => {
-    return fetch(API_URL + "/register", {
+    return fetch(API_URL + "/users", {
       method: "POST",
       headers: headers,
       body: JSON.stringify({username, password})
@@ -13,9 +13,9 @@ export function setAuth(username, password) {
     .then(r => r.json())
     .then(userData => {
       console.log("SIGNUP", userData)
-      localStorage.setItem("token", userData.jwt)
+      localStorage.setItem("auth", JSON.stringify(userData))
       dispatch({
-        type: "SIGNUP_USER",
+        type: "LOGIN_USER",
         payload: userData
       })
     })
@@ -40,11 +40,37 @@ export function getUser() {
   }
 }
 
-// export function setAuth(auth) {
-//   return (dispatch) => {
-//     dispatch({
-//       type: "SET_AUTH",
-//       payload: auth
-//     })
-//   }
-// }
+export function login(username, password){
+  return (dispatch) => {
+    return fetch(API_URL + "/sessions", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({username, password})
+    })
+    .then(r => r.json())
+    .then(userData => {
+      console.log("LOGGING IN", userData)
+      localStorage.setItem("auth", JSON.stringify(userData))
+      dispatch({
+        type: "LOGIN_USER",
+        payload: userData
+      })
+    })
+  }
+}
+
+export function logout(){
+  localStorage.removeItem("token")
+  return {
+    type: "LOGOUT"
+  }
+}
+
+export function saveAuth(auth) {
+  return (dispatch) => {
+    dispatch({
+      type: "SAVE_AUTH",
+      payload: auth
+    })
+  }
+}

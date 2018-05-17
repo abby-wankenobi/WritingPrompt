@@ -17,14 +17,13 @@ class Register extends React.Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault()
     if (this.state.password === this.state.passwordConfirmation){
-
+      this.props.setAuth(this.state.username, this.state.password)
+      .then(() => this.props.history.push("/home"))
     } else {
       alert("Nope")
     }
-
-    this.props.setAuth(this.state.username, this.state.password)
-    .then(() => this.props.history.push("/home"))
   }
 
   // handleSubmit = (e) => {
