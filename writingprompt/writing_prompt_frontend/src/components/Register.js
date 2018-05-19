@@ -49,7 +49,7 @@ class Register extends React.Component {
     return(
       <div>
         <form onChange={this.handleChange}>
-          <label>Butts</label>
+          <label>Register</label>
           <br></br>
           <input value={this.state.username} name="username" placeholder="Username" />
           <br></br>

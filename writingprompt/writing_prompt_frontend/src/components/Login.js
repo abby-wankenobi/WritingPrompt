@@ -18,7 +18,13 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.login(this.state.username, this.state.password)
-    .then(() => this.props.history.push("/home"))
+    .then(() =>
+      {if (localStorage.auth){
+        this.props.history.push("/home")
+      } else {
+        this.props.history.push("/login")
+      }}
+    )
   }
 
   render(){

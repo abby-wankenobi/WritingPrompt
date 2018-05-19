@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      byebug
       render json: user_hash(@user)
     else
       render json: @user.errors, status: :unprocessable_entity

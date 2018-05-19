@@ -50,17 +50,22 @@ export function login(username, password){
     .then(r => r.json())
     .then(userData => {
       console.log("LOGGING IN", userData)
-      localStorage.setItem("auth", JSON.stringify(userData))
-      dispatch({
-        type: "LOGIN_USER",
-        payload: userData
-      })
+
+      if (!userData.error){
+        localStorage.setItem("auth", JSON.stringify(userData))
+        dispatch({
+          type: "LOGIN_USER",
+          payload: userData
+        })
+      } else {
+        alert("Nope")
+      }
     })
   }
 }
 
 export function logout(){
-  localStorage.removeItem("token")
+  localStorage.removeItem("auth")
   return {
     type: "LOGOUT"
   }

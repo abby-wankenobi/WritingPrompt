@@ -1,15 +1,19 @@
 class PromptsController < ApplicationController
+  skip_before_action :authenticate!, only: [:index, :show]
   before_action :set_prompt, only: [:show, :update, :destroy]
 
   # GET /prompts
   # GET /prompts.json
   def index
     @prompts = Prompt.all
+
+    render json: @prompts
   end
 
   # GET /prompts/1
   # GET /prompts/1.json
   def show
+    render json: @prompt
   end
 
   # POST /prompts
