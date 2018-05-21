@@ -1,15 +1,20 @@
 class GenresController < ApplicationController
+  skip_before_action :authenticate!, only: [:index, :show]
   before_action :set_genre, only: [:show, :update, :destroy]
 
   # GET /genres
   # GET /genres.json
   def index
     @genres = Genre.all
+
+    render json: @genres
   end
 
   # GET /genres/1
   # GET /genres/1.json
   def show
+
+    render json: @genre
   end
 
   # POST /genres

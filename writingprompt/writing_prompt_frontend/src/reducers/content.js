@@ -1,12 +1,21 @@
 const defaultState = {
-  prompts: []
+  prompts: [],
+  user_info: null,
+  genres: [],
+  story: null
 }
 
 
 export default function contentReducer (state=defaultState, action){
   switch(action.type){
     case "GET_PROMPTS":
-      return {...state, prompts: [...state.prompts, action.payload]}
+      return {...state, prompts: action.payload}
+    case "USER_INFO":
+      return {...state, user_info: action.payload}
+    case "GET_GENRES":
+      return {...state, genres: action.payload}
+    case "SET_STORY":
+      return {...state, story: action.payload}
     default:
       return state
   }

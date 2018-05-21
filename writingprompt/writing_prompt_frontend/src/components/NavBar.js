@@ -27,7 +27,7 @@ class NavBar extends React.Component{
               }
               {
                 this.props.auth ?
-                <li><a onClick={() => this.props.history.push('/home')}>Profile</a></li> :
+                <li><a onClick={() => this.props.history.push(`/users/${this.props.auth.user_id}`)}>Profile</a></li> :
                 null
               }
               {
@@ -104,7 +104,7 @@ class NavBar extends React.Component{
 }
 
 function mapStateToProps(state){
-  return {auth: state.auth}
+  return {auth: state.mainReducer.auth}
 }
 
 export default connect(mapStateToProps, {getUser, saveAuth, logout})(NavBar)

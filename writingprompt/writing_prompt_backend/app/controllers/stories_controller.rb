@@ -18,7 +18,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
 
     if @story.save
-      render :show, status: :created, location: @story
+      render json: @story
     else
       render json: @story.errors, status: :unprocessable_entity
     end
