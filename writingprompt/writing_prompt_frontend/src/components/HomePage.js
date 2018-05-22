@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     console.log(this.props.prompts)
     let allPrompts
     if (this.props.prompts.length > 0) {
-      allPrompts = this.props.prompts[0].map(prompt => {
+      allPrompts = this.props.prompts.map(prompt => {
         return <PromptComponent key={prompt.id} prompt={prompt} />
       })
     }

@@ -11,6 +11,7 @@ import NavBar from './components/NavBar'
 import ProfilePage from './components/ProfilePage'
 import NewStory from './components/NewStory'
 import ShowStory from './components/ShowStory'
+import UpdateStory from './components/UpdateStory'
 
 class App extends Component {
 
@@ -18,7 +19,6 @@ class App extends Component {
     if (localStorage.getItem("auth")){
       const auth = JSON.parse(localStorage.auth)
       this.props.saveAuth(auth)
-      // this.props.history.push('/home')
     }
   }
 
@@ -33,7 +33,8 @@ class App extends Component {
         <Route path="/home" component={HomePage}/>
         <Route path="/users/:id" component={ProfilePage} />
         <Route path="/newstory" component={NewStory} />
-        <Route path="/showstory" component={ShowStory} />
+        <Route exact path="/stories/:id" component={ShowStory} />
+        <Route path="/stories/:id/edit" component={UpdateStory} />
       </div>
 
     </div>

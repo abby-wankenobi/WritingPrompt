@@ -4,7 +4,7 @@ class ProfileStory extends React.Component {
 
   render(){
     return(
-      <div>
+      <div onClick={() => this.props.history.push(`/stories/${this.props.story.id}`)}>
         <br></br>
         Title: {this.props.story.title}
         <br></br>

@@ -21,9 +21,9 @@ class ProfilePage extends React.Component{
       console.log('beef')
       username = this.props.user_info.username
       bio = this.props.user_info.bio
-      userStories = this.props.user_info.stories.map(story => <ProfileStory story={story}/>)
+      userStories = this.props.user_info.stories.map(story => <ProfileStory history={this.props.history} story={story}/>)
     }
-    console.log(this.props.user_info)
+    console.log(this.props)
 
     return(
       <div className="ProfilePage">
@@ -45,7 +45,8 @@ class ProfilePage extends React.Component{
 }
 
 function mapStateToProps(state){
-  return {user_info: state.contentReducer.user_info,
+  return {
+    user_info: state.contentReducer.user_info,
     auth: state.mainReducer.auth}
 }
 

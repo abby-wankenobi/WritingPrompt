@@ -1,15 +1,25 @@
 class StoriesController < ApplicationController
+  skip_before_action :authenticate!, only: [:index, :show]
   before_action :set_story, only: [:show, :update, :destroy]
 
   # GET /stories
   # GET /stories.json
   def index
     @stories = Story.all
+
+    render json: @stories
   end
 
   # GET /stories/1
   # GET /stories/1.json
   def show
+    render json: {
+      id: @story.id,
+      prompt: @story.prompt,
+      title: @story.title,
+      content: @story.content,
+      user: @story.user 
+    }
   end
 
   # POST /stories

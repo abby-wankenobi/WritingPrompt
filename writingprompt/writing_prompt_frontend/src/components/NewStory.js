@@ -60,8 +60,7 @@ class NewStory extends React.Component {
     })
     .then(res => res.json())
     .then(story => {
-      this.props.setStory(story)
-      this.props.history.push('/showstory')
+      this.props.history.push(`/stories/${story.id}`)
     })
   }
 
@@ -93,6 +92,8 @@ console.log(this.props.genres)
           <textarea name="content" placeholder="Story" rows="30" cols="50"/>
           <br></br>
           <button onClick={this.handleSubmit}>Save Story</button>
+          <br></br>
+          <button onClick={() => this.props.history.push(`/users/${this.props.user.id}`)}>Back to Profile</button>
         </form>
       </div>
     )
