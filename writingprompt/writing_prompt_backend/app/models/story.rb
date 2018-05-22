@@ -5,5 +5,5 @@ class Story < ApplicationRecord
   def genre
     self.prompt.genre
   end
-  
+
 end

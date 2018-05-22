@@ -13,7 +13,7 @@ class PromptsController < ApplicationController
   # GET /prompts/1
   # GET /prompts/1.json
   def show
-    render json: @prompt
+    render json: @prompt.serialized_data
   end
 
   # POST /prompts
@@ -52,6 +52,6 @@ class PromptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prompt_params
-      params.require(:prompt).permit(:content, :genre_id)
+      params.require(:prompt).permit(:content, :genre_id, :user_id)
     end
 end

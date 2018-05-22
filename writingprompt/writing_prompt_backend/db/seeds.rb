@@ -22,6 +22,8 @@ Prompt.create({content: "A woman has been dating guy after guy, but it never see
 Prompt.create({content: "Harry, Ron and Hermione aren't actually wizards or in the wizarding world. They are high on drugs and hallucinating throughout their journeys. The cops are Dementors and Dumbledore is a crazy old homeless man.", genre_id:3})
 Prompt.create({content: "You're happily going about your day when you vanish in a cloud of smoke. Suddenly, you're standing in a ring of candles. A sorcerer holding a tome looks pleased at your arrival. Turns out Earth is Hell, we're the demons, and you've just been summoned.", genre_id:3})
 Prompt.create({content: " Pennywise picks on the wrong kids: Malcolm, Reese and Dewey", genre_id:5})
+Prompt.create({content: "You find yourself being the last person on Earth without any knowledge of where others have gone too. To keep your sanity of knowing there used to be others, you open up a great deal of graves only to find out there is nobody in them.", genre_id:4})
+
 
 
 Story.create({title: "new story", content: "sum bullshit", user_id: 14, prompt_id: 3})

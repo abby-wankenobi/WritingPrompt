@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setStory } from '../actions/content_actions'
+import { setStory } from '../../actions/content_actions'
 
 class ShowStory extends React.Component {
 
@@ -38,6 +38,9 @@ class ShowStory extends React.Component {
           { this.props.story.user.id === this.props.user.user_id ? <button onClick={() => this.props.history.push(`/stories/${this.props.story.id}/edit`)}>Update</button> : null }
           <br></br>
           { this.props.story.user.id === this.props.user.user_id ? <button onClick={this.deleteStory}>Delete</button> : null }
+          <br></br>
+          <br></br>
+          <button onClick={() => this.props.history.push(`/home`)}>Home</button>
           <br></br>
           <button onClick={() => this.props.history.push(`/users/${this.props.user.id}`)}>Back to Profile</button>
         </div>

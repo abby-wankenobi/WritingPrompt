@@ -1,27 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setStory } from '../actions/content_actions'
+import { setStory } from '../../actions/content_actions'
 
-class ShowStory extends React.Component {
+class UpdatePrompt extends React.Component {
 
   state = {
-    url: `http://localhost:3000/stories/${this.props.match.params.id}`,
-    title: "",
+    url: `http://localhost:3000/prompts/${this.props.match.params.id}`,
     content: ""
   }
 
   componentWillMount() {
-    if (!this.props.story) {
-      this.props.history.push(`/stories/${this.props.match.params.id}`)
+    if (!this.props.prompt) {
+      this.props.history.push(`/prompts/${this.props.match.params.id}`)
     } else {
       this.setState({
-        title: this.props.story.title,
-        content: this.props.story.content
+        content: this.props.prompt.content
       })
     }
   }
 
-  updateStory = (e) => {
+  updatePrompt = (e) => {
     e.preventDefault()
     fetch(this.state.url, {
       method: "PATCH",
@@ -30,8 +28,7 @@ class ShowStory extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        story: {
-          title: this.state.title,
+        prompt: {
           content: this.state.content
         }
       })
@@ -47,18 +44,15 @@ class ShowStory extends React.Component {
 
   render (){
 
-    let story
-    if (this.props.story){
-      story = (
+    let prompt
+    if (this.props.prompt){
+      prompt = (
         <div className="EditStory">
-          <h3>{this.props.story.prompt.content}</h3>
           <br></br>
           <form onChange={this.handleChange}>
-            <input name="title" value={this.state.title} />
-            <br></br>
             <textarea rows="30" name="content" value={this.state.content} />
             <br></br>
-            <button onClick={this.updateStory}>Save</button>
+            <button onClick={this.updatePrompt}>Save</button>
           </form>
         </div>
       )
@@ -66,7 +60,7 @@ class ShowStory extends React.Component {
 
     return(
       <div>
-        {story}
+        {prompt}
       </div>
     )
   }
@@ -75,9 +69,9 @@ class ShowStory extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    story: state.contentReducer.story,
+    prompt: state.contentReducer.prompt,
     user: state.mainReducer.auth
   }
 }
 
-export default connect(mapStateToProps, { setStory })(ShowStory)
+export default connect(mapStateToProps, { setStory })(UpdatePrompt)

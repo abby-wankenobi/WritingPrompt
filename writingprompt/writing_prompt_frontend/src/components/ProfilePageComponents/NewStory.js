@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { getGenres, getPrompts, setStory } from '../actions/content_actions'
+import { getGenres, getPrompts, setStory } from '../../actions/content_actions'
 
 class NewStory extends React.Component {
 
@@ -77,11 +77,13 @@ console.log(this.props.genres)
     return(
       <div className="NewStory">
         <h3>Choose a Prompt</h3>
+        <br></br>
+        <h5>Select a Genre</h5>
         <select onChange={this.handleChange}>
-          <option>Select Genre...</option>
           {genres}
         </select>
         <br></br>
+        <h5>Or Get A Random Prompt</h5>
         <button onClick={this.handleClick}>Random Prompt</button>
         <br></br>
         <br></br>
@@ -93,7 +95,7 @@ console.log(this.props.genres)
           <br></br>
           <button onClick={this.handleSubmit}>Save Story</button>
           <br></br>
-          <button onClick={() => this.props.history.push(`/users/${this.props.user.id}`)}>Back to Profile</button>
+          <button onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
         </form>
       </div>
     )

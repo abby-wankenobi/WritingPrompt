@@ -8,10 +8,14 @@ import HomePage from './components/HomePage'
 import {getUser, saveAuth, logout} from './actions/auth_actions'
 import Login from './components/Login'
 import NavBar from './components/NavBar'
-import ProfilePage from './components/ProfilePage'
-import NewStory from './components/NewStory'
-import ShowStory from './components/ShowStory'
-import UpdateStory from './components/UpdateStory'
+import ProfilePage from './components/ProfilePageComponents/ProfilePage'
+import NewStory from './components/ProfilePageComponents/NewStory'
+import ShowStory from './components/ProfilePageComponents/ShowStory'
+import UpdateStory from './components/ProfilePageComponents/UpdateStory'
+import NewPrompt from './components/ProfilePageComponents/NewPrompt'
+import ShowPrompt from './components/ProfilePageComponents/ShowPrompt'
+import UpdatePrompt from './components/ProfilePageComponents/UpdatePrompt'
+
 
 class App extends Component {
 
@@ -35,6 +39,9 @@ class App extends Component {
         <Route path="/newstory" component={NewStory} />
         <Route exact path="/stories/:id" component={ShowStory} />
         <Route path="/stories/:id/edit" component={UpdateStory} />
+        <Route path="/newprompt" component={NewPrompt} />
+        <Route exact path="/prompts/:id" component={ShowPrompt} />
+        <Route path="/prompts/:id/edit" component={UpdatePrompt} />
       </div>
 
     </div>

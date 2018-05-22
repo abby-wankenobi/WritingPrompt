@@ -27,14 +27,32 @@ a {
 }
 
 .NewStory {
+  padding-top: 80px;
   padding-left: 60px;
 }
 
 .eachStory {
+  padding-top: 80px;
   padding-left: 60px;
 }
 
 .EditStory {
+  padding-top: 80px;
+  padding-left: 60px;
+}
+
+.ShowPrompt {
+  padding-top: 80px;
+  padding-left: 60px;
+}
+
+.eachPrompt {
+  padding-top: 80px;
+  padding-left: 60px;
+}
+
+.HomePage {
+  padding-top: 80px;
   padding-left: 60px;
 }
 

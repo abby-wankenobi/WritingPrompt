@@ -31,8 +31,24 @@ export function getGenres(){
   }
 }
 
+export function getStories(){
+  return (dispatch) => {
+    return fetch(API_URL + "/stories")
+    .then(res => res.json())
+    .then(stories => {
+      dispatch({type: "GET_STORIES", payload: stories})
+    })
+  }
+}
+
 export function setStory(story){
   return (dispatch) => {
     dispatch({type: "SET_STORY", payload: story})
+  }
+}
+
+export function setPrompt(prompt){
+  return (dispatch) => {
+    dispatch({type: "SET_PROMPT", payload: prompt})
   }
 }
