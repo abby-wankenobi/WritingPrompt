@@ -3,12 +3,12 @@ const headers = {
   "Content-Type": "application/json"
 }
 
-export function setAuth(username, password) {
+export function setAuth(username, password, bio) {
   return (dispatch) => {
     return fetch(API_URL + "/users", {
       method: "POST",
       headers: headers,
-      body: JSON.stringify({username, password})
+      body: JSON.stringify({username, password, bio})
     })
     .then(r => r.json())
     .then(userData => {

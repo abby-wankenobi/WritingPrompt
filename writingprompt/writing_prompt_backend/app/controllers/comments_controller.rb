@@ -1,16 +1,21 @@
 class CommentsController < ApplicationController
-  
+  skip_before_action :authenticate!, only: [:index, :create, :show]
+
   before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
   def index
     @comments = Comment.all
+
+    render json: @comments
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    render json: @comment
+
   end
 
   # POST /comments
@@ -19,7 +24,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      render :show, status: :created, location: @comment
+      render json: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
@@ -49,6 +54,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:story_id, :title, :content)
+      params.require(:comment).permit(:story_id, :title, :content, :user_id)
     end
 end

@@ -35,7 +35,7 @@ class ProfilePage extends React.Component{
           <br></br>
           Bio: {bio}
           <br></br>
-          { this.props.match.params.id == this.props.auth.user_id ? <button onClick={() => this.props.history.push(`/newStory`)}>Create New Story</button> : null }
+          { this.props.match.params.id == this.props.auth.user_id ? <button history={this.props.history} onClick={() => this.props.history.push(`/newStory`)}>Create New Story</button> : null }
           <br></br>
           { this.props.match.params.id == this.props.auth.user_id ? <button history={this.props.history} onClick={() => this.props.history.push(`/newPrompt`)}>Create New Prompt</button> : null }
         </div>

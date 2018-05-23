@@ -52,3 +52,9 @@ export function setPrompt(prompt){
     dispatch({type: "SET_PROMPT", payload: prompt})
   }
 }
+
+export function addComment(comment){
+  return (dispatch) => {
+    dispatch({type: "ADD_COMMENT", payload: comment})
+  }
+}

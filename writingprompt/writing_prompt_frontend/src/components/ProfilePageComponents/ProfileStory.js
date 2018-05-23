@@ -8,7 +8,6 @@ class ProfileStory extends React.Component {
         <br></br>
         Title: {this.props.story.title}
         <br></br>
-        Content: {this.props.story.content}
         <br></br>
         <br></br>
       </div>

@@ -7,7 +7,7 @@ class StoryComponent extends React.Component{
     console.log(this.props)
     return(
       <li onClick={() => this.props.history.push(`/stories/${this.props.story.id}`)}>
-        {this.props.story.content}
+        {this.props.story.title}
         <br></br>
         <br></br>
       </li>

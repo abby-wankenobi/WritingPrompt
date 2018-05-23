@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setStory } from '../../actions/content_actions'
+import { setStory, addComment } from '../../actions/content_actions'
+import Comments from './Comments'
 
 class ShowStory extends React.Component {
 
   state = {
-    url: `http://localhost:3000/stories/${this.props.match.params.id}`
+    url: `http://localhost:3000/stories/${this.props.match.params.id}`,
+    title: "",
+    content: ""
   }
 
 
@@ -23,11 +26,46 @@ class ShowStory extends React.Component {
     .then(r => this.props.history.push(`/users/${this.props.user.id}`))
   }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch("http://localhost:3000/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        comment: {
+          title: this.state.title,
+          content: this.state.content,
+          story_id: this.props.story.id,
+          user_id: this.props.user.user_id
+        }
+      })
+    })
+    .then(r => r.json())
+    .then(comment => {
+      this.props.addComment(comment)
+      this.setState({
+        title: "",
+        content: ""
+      })
+    })
+  }
+
 
   render (){
 
+
+    console.log(this.props)
     let story
     if (this.props.story){
+      const comments = this.props.story.comments.map(comment => <Comments comment={comment} />)
       story = (
         <div className="eachStory">
           <h3>{this.props.story.prompt.content}</h3>
@@ -42,7 +80,22 @@ class ShowStory extends React.Component {
           <br></br>
           <button onClick={() => this.props.history.push(`/home`)}>Home</button>
           <br></br>
-          <button onClick={() => this.props.history.push(`/users/${this.props.user.id}`)}>Back to Profile</button>
+          <button onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <form onChange={this.handleChange}>
+            <input value={this.state.title} name="title" placeholder="Title"/>
+            <textarea value={this.state.content} name="content" placeholder="Leave a Comment..." />
+            <button onClick={this.handleSubmit}>Submit</button>
+          </form>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h2>Comments</h2>
+          <br></br>
+          {comments}
         </div>
       )
     }
@@ -63,4 +116,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { setStory })(ShowStory)
+export default connect(mapStateToProps, { setStory, addComment })(ShowStory)

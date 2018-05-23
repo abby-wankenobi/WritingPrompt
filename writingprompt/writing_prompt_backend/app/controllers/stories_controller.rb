@@ -18,7 +18,8 @@ class StoriesController < ApplicationController
       prompt: @story.prompt,
       title: @story.title,
       content: @story.content,
-      user: @story.user 
+      user: @story.user,
+      comments: @story.comments
     }
   end
 
@@ -26,7 +27,6 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-
     if @story.save
       render json: @story
     else

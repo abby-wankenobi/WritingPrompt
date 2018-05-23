@@ -1,11 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setPrompt } from '../../actions/content_actions'
+import NewStoryForm from '../NewStoryForm'
 
 class ShowPrompt extends React.Component {
 
   state = {
-    url: `http://localhost:3000/prompts/${this.props.match.params.id}`
+    url: `http://localhost:3000/prompts/${this.props.match.params.id}`,
+    mode: "show"
   }
 
 
@@ -23,6 +25,11 @@ class ShowPrompt extends React.Component {
     .then(r => this.props.history.push(`/users/${this.props.user.user_id}`))
   }
 
+  handleClick = () => {
+    this.setState({
+      mode: "edit"
+    })
+  }
 
   render (){
   console.log(this.props)
@@ -33,7 +40,9 @@ class ShowPrompt extends React.Component {
         <div className="eachPrompt">
           <h3>{this.props.prompt.content}</h3>
           <br></br>
-          { this.props.user ? <button onClick={() => this.props.history.push(`/newStory`)}>Create New Story</button> : null }
+          { this.props.user ? <button onClick={this.handleClick}>Create New Story</button> : null }
+          <br></br>
+          { this.state.mode === "edit" ? <NewStoryForm history={this.props.history} prompt={this.props.prompt} /> : null}
           <br></br>
           { this.props.prompt.user && this.props.prompt.user.id === this.props.user.user_id ? <button onClick={() => this.props.history.push(`/prompts/${this.props.prompt.id}/edit`)}>Update</button> : null }
           <br></br>

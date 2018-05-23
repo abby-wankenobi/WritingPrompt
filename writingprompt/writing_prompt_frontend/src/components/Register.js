@@ -7,7 +7,8 @@ class Register extends React.Component {
   state = {
     username: "",
     password: "",
-    passwordConfirmation: ""
+    passwordConfirmation: "",
+    bio: ""
   }
 
   handleChange = (e) => {
@@ -19,7 +20,7 @@ class Register extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.password === this.state.passwordConfirmation){
-      this.props.setAuth(this.state.username, this.state.password)
+      this.props.setAuth(this.state.username, this.state.password, this.state.bio)
       .then(() => this.props.history.push("/home"))
     } else {
       alert("Nope")
@@ -56,6 +57,8 @@ class Register extends React.Component {
           <input type="password" value={this.state.password} name="password" placeholder="password" />
           <br></br>
           <input type="password" value={this.state.passwordConfirmation} name="passwordConfirmation" placeholder="Confirm password"/>
+          <br></br>
+          <textarea value={this.state.bio} name="bio" placeholder="Bio"/>
           <br></br>
           <button onClick={this.handleSubmit}>Submit</button>
         </form>

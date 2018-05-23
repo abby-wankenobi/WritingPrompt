@@ -22,6 +22,8 @@ export default function contentReducer (state=defaultState, action){
       return {...state, prompt: action.payload}
     case "GET_STORIES":
       return {...state, stories: action.payload}
+    case "ADD_COMMENT":
+      return {...state, story: {...state.story, comments: [...state.story.comments, action.payload]}}
     default:
       return state
   }
