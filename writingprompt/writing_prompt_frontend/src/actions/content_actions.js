@@ -41,6 +41,18 @@ export function getStories(){
   }
 }
 
+export function getLikes(auth){
+  return (dispatch) => {
+    return fetch(API_URL + "/storylikes", {
+      headers: {"Authorization": `Token token=${ auth.token }`}
+    })
+    .then(r => r.json())
+    .then(storylikes => {
+      dispatch({type: "SET_LIKES", payload: storylikes})
+    })
+  }
+}
+
 export function setStory(story){
   return (dispatch) => {
     dispatch({type: "SET_STORY", payload: story})

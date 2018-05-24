@@ -6,6 +6,7 @@ import Register from './components/Register'
 import {Route, withRouter} from 'react-router-dom'
 import HomePage from './components/HomePage'
 import {getUser, saveAuth, logout} from './actions/auth_actions'
+import { getLikes } from './actions/content_actions'
 import Login from './components/Login'
 import NavBar from './components/NavBar'
 import ProfilePage from './components/ProfilePageComponents/ProfilePage'
@@ -23,6 +24,7 @@ class App extends Component {
     if (localStorage.getItem("auth")){
       const auth = JSON.parse(localStorage.auth)
       this.props.saveAuth(auth)
+      this.props.getLikes(auth)
     }
   }
 
@@ -53,4 +55,4 @@ function mapStateToProps(state){
   return {auth: state.auth}
 }
 
-export default withRouter(connect(mapStateToProps, {getUser, saveAuth, logout})(App))
+export default withRouter(connect(mapStateToProps, {getUser, saveAuth, logout, getLikes})(App))

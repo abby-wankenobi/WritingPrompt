@@ -7,7 +7,8 @@ class ShowPrompt extends React.Component {
 
   state = {
     url: `http://localhost:3000/prompts/${this.props.match.params.id}`,
-    mode: "show"
+    mode: "show",
+    like: ""
   }
 
 
@@ -31,14 +32,31 @@ class ShowPrompt extends React.Component {
     })
   }
 
+  handleLike = () => {
+    this.setState({
+      like: "unlike"
+    })
+  }
+
   render (){
   console.log(this.props)
+
+    let like
+    if(this.state.like === "liked") {
+      like = (
+        <div>
+          <button onClick={this.handleLike}>Unlike</button>
+        </div>
+      )
+    }
 
     let prompt
     if (this.props.prompt){
       prompt = (
         <div className="eachPrompt">
           <h3>{this.props.prompt.content}</h3>
+          <br></br>
+          { this.props.user ? <button onClick={this.handleClick}>Like</button> : null }
           <br></br>
           { this.props.user ? <button onClick={this.handleClick}>Create New Story</button> : null }
           <br></br>

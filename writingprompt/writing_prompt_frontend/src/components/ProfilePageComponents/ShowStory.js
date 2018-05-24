@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setStory, addComment } from '../../actions/content_actions'
+import { setStory, addComment, getLikes } from '../../actions/content_actions'
 import Comments from './Comments'
 
 class ShowStory extends React.Component {
@@ -8,14 +8,18 @@ class ShowStory extends React.Component {
   state = {
     url: `http://localhost:3000/stories/${this.props.match.params.id}`,
     title: "",
-    content: ""
+    content: "",
+    storylikes: []
   }
 
 
   componentDidMount() {
     fetch(this.state.url)
     .then(res => res.json())
-    .then(story => this.props.setStory(story))
+    .then(story => {
+      this.props.setStory(story)
+      this.props.getLikes(this.props.user)
+    })
   }
 
   deleteStory = () => {
@@ -112,8 +116,9 @@ class ShowStory extends React.Component {
 function mapStateToProps(state) {
   return {
     story: state.contentReducer.story,
-    user: state.mainReducer.auth
+    user: state.mainReducer.auth,
+    likes: state.contentReducer.storylikes
   }
 }
 
-export default connect(mapStateToProps, { setStory, addComment })(ShowStory)
+export default connect(mapStateToProps, { setStory, addComment, getLikes })(ShowStory)

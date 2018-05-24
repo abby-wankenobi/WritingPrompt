@@ -12,7 +12,7 @@
 # Genre.create({title: "Fantasy"})
 # Genre.create({title: "Mystery"})
 # Genre.create({title: "Thriller"})
-Genre.create({title: "Comedy"})
+# Genre.create({title: "Comedy"})
 # Genre.create({title: "Historical Fiction"})
 #
 #
@@ -25,6 +25,9 @@ Genre.create({title: "Comedy"})
 # Prompt.create({content: " Pennywise picks on the wrong kids: Malcolm, Reese and Dewey", genre_id:5})
 # Prompt.create({content: "You find yourself being the last person on Earth without any knowledge of where others have gone too. To keep your sanity of knowing there used to be others, you open up a great deal of graves only to find out there is nobody in them.", genre_id:4})
 
+# Storylike.create({user_id: 1, story_id: 1})
+# Storylike.create({user_id: 1, story_id: 2})
+Storylike.create({user_id: 2, story_id: 2})
 
 
 # Story.create({title: "new story", content: "sum bullshit", user_id: 14, prompt_id: 3})

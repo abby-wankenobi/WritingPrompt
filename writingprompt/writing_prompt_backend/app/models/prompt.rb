@@ -2,6 +2,7 @@ class Prompt < ApplicationRecord
   has_many :stories
   belongs_to :genre
   belongs_to :user, optional: true
+  has_many :promptlikes
 
   def serialized_data
     story_objects = self.stories.map do |story|

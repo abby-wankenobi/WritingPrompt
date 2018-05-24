@@ -4,7 +4,8 @@ const defaultState = {
   genres: [],
   story: null,
   prompt: null,
-  stories: []
+  stories: [],
+  storylikes: []
 }
 
 
@@ -24,6 +25,8 @@ export default function contentReducer (state=defaultState, action){
       return {...state, stories: action.payload}
     case "ADD_COMMENT":
       return {...state, story: {...state.story, comments: [...state.story.comments, action.payload]}}
+    case "SET_LIKES":
+      return {...state, storylikes: action.payload}
     default:
       return state
   }

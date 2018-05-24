@@ -13,14 +13,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    render json: {
-      id: @story.id,
-      prompt: @story.prompt,
-      title: @story.title,
-      content: @story.content,
-      user: @story.user,
-      comments: @story.comments
-    }
+    render json: @story.serialized_data
   end
 
   # POST /stories

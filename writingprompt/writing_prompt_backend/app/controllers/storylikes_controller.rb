@@ -4,12 +4,16 @@ class StorylikesController < ApplicationController
   # GET /storylikes
   # GET /storylikes.json
   def index
-    @storylikes = Storylike.all
+
+    user = User.find(current_user_id)
+
+    render json: user.storylikes
   end
 
   # GET /storylikes/1
   # GET /storylikes/1.json
   def show
+
   end
 
   # POST /storylikes
