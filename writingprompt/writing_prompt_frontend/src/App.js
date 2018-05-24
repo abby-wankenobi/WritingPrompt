@@ -16,7 +16,8 @@ import UpdateStory from './components/ProfilePageComponents/UpdateStory'
 import NewPrompt from './components/ProfilePageComponents/NewPrompt'
 import ShowPrompt from './components/ProfilePageComponents/ShowPrompt'
 import UpdatePrompt from './components/ProfilePageComponents/UpdatePrompt'
-
+import PromptsPage from './components/PromptsPage'
+import StoriesPage from './components/StoriesPage'
 
 class App extends Component {
 
@@ -44,6 +45,8 @@ class App extends Component {
         <Route path="/newprompt" component={NewPrompt} />
         <Route exact path="/prompts/:id" component={ShowPrompt} />
         <Route path="/prompts/:id/edit" component={UpdatePrompt} />
+        <Route exact path="/prompts" component={PromptsPage} />
+        <Route exact path="/stories" component={StoriesPage} />
       </div>
 
     </div>
