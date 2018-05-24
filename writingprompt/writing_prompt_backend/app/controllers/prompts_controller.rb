@@ -7,7 +7,12 @@ class PromptsController < ApplicationController
   def index
     @prompts = Prompt.all
 
-    render json: @prompts
+    data =  @prompts.map do |thing|
+      thing.serialized_data
+    end
+
+    render json: data
+
   end
 
   # GET /prompts/1

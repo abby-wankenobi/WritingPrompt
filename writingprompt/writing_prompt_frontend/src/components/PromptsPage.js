@@ -7,7 +7,8 @@ class PromptsPage extends React.Component {
 
   state = {
     genre: "All Genres",
-    prompts: this.props.prompts
+    prompts: this.props.prompts,
+    filter: "Newest"
   }
 
   componentWillMount(){
@@ -32,6 +33,54 @@ class PromptsPage extends React.Component {
     }else{
       this.setState({
         prompts: this.props.prompts
+      })
+    }
+  }
+
+  handleFilterChange = (e) => {
+    if (e.target.value === "Newest"){
+      this.setState({
+        filter: "Newest"
+      })
+      let newFilter = this.state.prompts.sort(function(a, b){
+        var keyA = new Date(a.created_at),
+            keyB = new Date(b.created_at);
+          if(keyA < keyB) return -1;
+          if(keyA > keyB) return 1;
+          return 0
+      });
+      this.setState({
+        prompts: newFilter
+      })
+    }else if (e.target.value === "Oldest"){
+      this.setState({
+        filter: "Oldest"
+      })
+      let newFilter = this.state.prompts.sort(function(a, b){
+        var keyA = new Date(a.created_at),
+            keyB = new Date(b.created_at);
+          if(keyA < keyB) return 1;
+          if(keyA > keyB) return -1;
+          return 0
+      });
+      this.setState({
+        prompts: newFilter
+      })
+    }else if(e.target.value === "Most Popular"){
+      this.setState({
+        filter: "Most Popular"
+      })
+      let newFilter = this.state.prompts.sort((a,b) => a.likes.length - b.likes.length)
+      this.setState({
+        prompts: newFilter
+      })
+    }else if(e.target.value === "Least Popular"){
+      this.setState({
+        filter: "Least Popular"
+      })
+      let newFilter = this.state.prompts.sort((a,b) => b.likes.length - a.likes.length)
+      this.setState({
+        prompts: newFilter
       })
     }
   }
@@ -61,11 +110,11 @@ class PromptsPage extends React.Component {
           <option value="All Genres">All Genres</option>
           {genres}
         </select>
-        <select>
-          <option>Newest</option>
-          <option>Oldest</option>
-          <option>Most Popular</option>
-          <option>Least Popular</option>
+        <select onChange={this.handleFilterChange}>
+          <option value="Newest">Newest</option>
+          <option value="Oldest">Oldest</option>
+          <option value="Most Popular">Most Popular</option>
+          <option value="LeastPopular">Least Popular</option>
         </select>
         <br></br>
         <br></br>
