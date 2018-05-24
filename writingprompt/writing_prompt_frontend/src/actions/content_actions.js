@@ -53,6 +53,18 @@ export function getLikes(auth){
   }
 }
 
+export function deleteLike(id){
+  return (dispatch) => {
+    dispatch({type: "DELETE_LIKE", payload: id})
+  }
+}
+
+export function addLike(like){
+  return (dispatch) => {
+    dispatch({type: "ADD_LIKE", payload: like})
+  }
+}
+
 export function setStory(story){
   return (dispatch) => {
     dispatch({type: "SET_STORY", payload: story})

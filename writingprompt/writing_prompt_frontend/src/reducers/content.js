@@ -27,6 +27,11 @@ export default function contentReducer (state=defaultState, action){
       return {...state, story: {...state.story, comments: [...state.story.comments, action.payload]}}
     case "SET_LIKES":
       return {...state, storylikes: action.payload}
+    case "DELETE_LIKE":
+      const storyLikes = state.storylikes.filter(like => like.id !== action.payload)
+      return {...state, storylikes: storyLikes}
+    case "ADD_LIKE":
+      return {...state, storylikes: [...state.storylikes, action.payload]}
     default:
       return state
   }

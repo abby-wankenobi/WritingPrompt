@@ -14,6 +14,7 @@ class StorylikesController < ApplicationController
   # GET /storylikes/1.json
   def show
 
+    render json: @storylike
   end
 
   # POST /storylikes
@@ -22,7 +23,7 @@ class StorylikesController < ApplicationController
     @storylike = Storylike.new(storylike_params)
 
     if @storylike.save
-      render :show, status: :created, location: @storylike
+      render json: @storylike
     else
       render json: @storylike.errors, status: :unprocessable_entity
     end

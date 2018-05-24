@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setStory, addComment, getLikes } from '../../actions/content_actions'
+import { setStory, addComment, getLikes, deleteLike, addLike } from '../../actions/content_actions'
 import Comments from './Comments'
 
 class ShowStory extends React.Component {
@@ -9,7 +9,7 @@ class ShowStory extends React.Component {
     url: `http://localhost:3000/stories/${this.props.match.params.id}`,
     title: "",
     content: "",
-    storylikes: []
+    storylike: "like"
   }
 
 
@@ -62,11 +62,53 @@ class ShowStory extends React.Component {
     })
   }
 
+  handleLike = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/storylikes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Token token=${ this.props.user.token }`
+      },
+      body: JSON.stringify({
+        storylike: {
+          user_id: this.props.user.user_id,
+          story_id: this.props.story.id
+        }
+      })
+    })
+    .then(r => r.json())
+    .then(like => this.props.addLike(like))
+  }
+
+  handleUnlike = (id) => {
+    fetch(`http://localhost:3000/storylikes/${id}`, {
+      method: "DELETE",
+      headers: {"Authorization": `Token token=${ this.props.user.token }`}
+    })
+    .then(like => this.props.deleteLike(id))
+  }
+
 
   render (){
 
-
     console.log(this.props)
+
+    let userLike
+    if (this.props.story){
+      let storyLike = this.props.likes.find(like => like.story_id === this.props.story.id)
+      if (storyLike) {
+            userLike = (
+              <button onClick={() => this.handleUnlike(storyLike.id)}>Unlike</button>
+            )
+      } else {
+            userLike = (
+              <button onClick={this.handleLike}>Like</button>
+            )
+      }
+    }
+
+
     let story
     if (this.props.story){
       const comments = this.props.story.comments.map(comment => <Comments comment={comment} />)
@@ -76,6 +118,11 @@ class ShowStory extends React.Component {
           <br></br>
           <h3>{this.props.story.title}</h3>
           <h5>{this.props.story.content}</h5>
+          <br></br>
+          {userLike}
+          <br></br>
+          Story Likes: {this.props.likes.length}
+          <br></br>
           <br></br>
           { this.props.story.user.id === this.props.user.user_id ? <button onClick={() => this.props.history.push(`/stories/${this.props.story.id}/edit`)}>Update</button> : null }
           <br></br>
@@ -121,4 +168,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { setStory, addComment, getLikes })(ShowStory)
+export default connect(mapStateToProps, { setStory, addComment, getLikes, deleteLike, addLike })(ShowStory)

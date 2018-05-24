@@ -21,7 +21,8 @@ class Story < ApplicationRecord
       content: self.content,
       title: self.title,
       user: self.user,
-      prompt: self.prompt
+      prompt: self.prompt,
+      likes: self.storylikes
     }
   end
 
