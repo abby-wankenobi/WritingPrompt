@@ -7,7 +7,11 @@ class StoriesController < ApplicationController
   def index
     @stories = Story.all
 
-    render json: @stories
+    data =  @stories.map do |thing|
+      thing.serialized_data
+    end
+
+    render json: data
   end
 
   # GET /stories/1

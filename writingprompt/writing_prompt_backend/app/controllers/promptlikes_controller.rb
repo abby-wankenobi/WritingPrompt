@@ -4,12 +4,16 @@ class PromptlikesController < ApplicationController
   # GET /promptlikes
   # GET /promptlikes.json
   def index
-    @promptlikes = Promptlike.all
+
+    user = User.find(current_user_id)
+
+    render json: user.promptlikes
   end
 
   # GET /promptlikes/1
   # GET /promptlikes/1.json
   def show
+    render json: @promptlike
   end
 
   # POST /promptlikes
@@ -18,7 +22,7 @@ class PromptlikesController < ApplicationController
     @promptlike = Promptlike.new(promptlike_params)
 
     if @promptlike.save
-      render :show, status: :created, location: @promptlike
+      render json: @promptlike
     else
       render json: @promptlike.errors, status: :unprocessable_entity
     end

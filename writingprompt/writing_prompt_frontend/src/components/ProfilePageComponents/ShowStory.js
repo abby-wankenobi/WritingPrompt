@@ -95,7 +95,7 @@ class ShowStory extends React.Component {
     console.log(this.props)
 
     let userLike
-    if (this.props.story){
+    if (this.props.story && this.props.user){
       let storyLike = this.props.likes.find(like => like.story_id === this.props.story.id)
       if (storyLike) {
             userLike = (
@@ -121,7 +121,7 @@ class ShowStory extends React.Component {
           <br></br>
           {userLike}
           <br></br>
-          Story Likes: {this.props.likes.length}
+          Story Likes: {this.props.story.likes.length}
           <br></br>
           <br></br>
           { this.props.story.user.id === this.props.user.user_id ? <button onClick={() => this.props.history.push(`/stories/${this.props.story.id}/edit`)}>Update</button> : null }

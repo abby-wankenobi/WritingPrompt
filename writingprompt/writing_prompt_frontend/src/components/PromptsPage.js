@@ -70,7 +70,7 @@ class PromptsPage extends React.Component {
       this.setState({
         filter: "Most Popular"
       })
-      let newFilter = this.state.prompts.sort((a,b) => a.likes.length - b.likes.length)
+      let newFilter = this.state.prompts.sort((a,b) => b.likes.length - a.likes.length)
       this.setState({
         prompts: newFilter
       })
@@ -78,7 +78,7 @@ class PromptsPage extends React.Component {
       this.setState({
         filter: "Least Popular"
       })
-      let newFilter = this.state.prompts.sort((a,b) => b.likes.length - a.likes.length)
+      let newFilter = this.state.prompts.sort((a,b) => a.likes.length - b.likes.length)
       this.setState({
         prompts: newFilter
       })
@@ -87,7 +87,7 @@ class PromptsPage extends React.Component {
 
 
   render(){
-    console.log(this.props)
+    console.log(this.state.prompts)
 
     let genres
     if (this.props.genres) {
@@ -114,7 +114,7 @@ class PromptsPage extends React.Component {
           <option value="Newest">Newest</option>
           <option value="Oldest">Oldest</option>
           <option value="Most Popular">Most Popular</option>
-          <option value="LeastPopular">Least Popular</option>
+          <option value="Least Popular">Least Popular</option>
         </select>
         <br></br>
         <br></br>

@@ -22,7 +22,9 @@ class Story < ApplicationRecord
       title: self.title,
       user: self.user,
       prompt: self.prompt,
-      likes: self.storylikes
+      likes: self.storylikes,
+      genre: self.prompt.genre,
+      created_at: self.created_at
     }
   end
 

@@ -53,6 +53,18 @@ export function getLikes(auth){
   }
 }
 
+export function getPromptLikes(auth){
+  return (dispatch) => {
+    return fetch(API_URL + "/promptlikes", {
+      headers: {"Authorization": `Token token=${ auth.token }`}
+    })
+    .then(r => r.json())
+    .then(promptlike => {
+      dispatch({type: "SET_PROMPTLIKES", payload: promptlike})
+    })
+  }
+}
+
 export function deleteLike(id){
   return (dispatch) => {
     dispatch({type: "DELETE_LIKE", payload: id})
@@ -62,6 +74,18 @@ export function deleteLike(id){
 export function addLike(like){
   return (dispatch) => {
     dispatch({type: "ADD_LIKE", payload: like})
+  }
+}
+
+export function addPromptLike(like){
+  return(dispatch) => {
+    dispatch({type: "ADD_PROMPTLIKE", payload: like})
+  }
+}
+
+export function deletePromptLike(id){
+  return (dispatch) => {
+    dispatch({type: "DELETE_PROMPTLIKE", payload: id})
   }
 }
 
