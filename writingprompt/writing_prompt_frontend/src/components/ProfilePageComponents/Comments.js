@@ -6,10 +6,14 @@ class Comments extends React.Component{
   render(){
     console.log(this.props)
     return(
-      <div>
-        <h3>{this.props.comment.title}</h3>
-        <h5>{this.props.comment.content}</h5>
+      <div className="commentForm">
+        <p className="commentTitle">{this.props.comment.title}</p>
+        <h4>{this.props.comment.content}</h4>
         <br></br>
+        <p size="5">-{this.props.comment.user.username}</p>
+          <br></br>
+          <img className="linebreak" src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="100px"></img>
+          <br></br>
       </div>
     )
   }

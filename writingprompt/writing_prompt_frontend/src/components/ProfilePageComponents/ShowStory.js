@@ -99,11 +99,11 @@ class ShowStory extends React.Component {
       let storyLike = this.props.likes.find(like => like.story_id === this.props.story.id)
       if (storyLike) {
             userLike = (
-              <button onClick={() => this.handleUnlike(storyLike.id)}>Unlike</button>
+              <button className="likebutton" onClick={() => this.handleUnlike(storyLike.id)}>Unlike</button>
             )
       } else {
             userLike = (
-              <button onClick={this.handleLike}>Like</button>
+              <button className="likebutton" onClick={this.handleLike}>Like</button>
             )
       }
     }
@@ -113,41 +113,54 @@ class ShowStory extends React.Component {
     if (this.props.story){
       const comments = this.props.story.comments.map(comment => <Comments comment={comment} />)
       story = (
+      <div className="eachStoryContainer">
         <div className="eachStory">
-          <h3>{this.props.story.prompt.content}</h3>
+          <h3 className="storyPrompt">{this.props.story.prompt.content}</h3>
           <br></br>
-          <h3>{this.props.story.title}</h3>
-          <h5>{this.props.story.content}</h5>
+            <br></br>
+            <img className="linebreak" src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="300px"></img>
+            <br></br>
           <br></br>
+          <p className="storyTitle">{this.props.story.title}</p>
+          <h5><a className="effect-underline" onClick={() => this.props.history.push(`/users/${this.props.story.user.id}`)}>By: {this.props.story.user.username}</a></h5>
+          <br></br>
+          <p className="storyContent">{this.props.story.content}</p>
+          <br></br>
+            <br></br>
+            <img className="linebreak" src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="300px"></img>
+            <br></br>
           {userLike}
           <br></br>
-          Story Likes: {this.props.story.likes.length}
+          <img src="https://i.pinimg.com/originals/23/1f/43/231f433738c1dd96e111b77b10e9b133.jpg" width="15px"></img>
+          <a>{this.props.story.likes.length}</a>
           <br></br>
           <br></br>
-          { this.props.story.user.id === this.props.user.user_id ? <button onClick={() => this.props.history.push(`/stories/${this.props.story.id}/edit`)}>Update</button> : null }
+          { this.props.story.user.id === this.props.user.user_id ? <button className="homeProfileButton" onClick={() => this.props.history.push(`/stories/${this.props.story.id}/edit`)}>Update</button> : null }
+          { this.props.story.user.id === this.props.user.user_id ? <button className="homeProfileButton" onClick={this.deleteStory}>Delete</button> : null }
           <br></br>
-          { this.props.story.user.id === this.props.user.user_id ? <button onClick={this.deleteStory}>Delete</button> : null }
           <br></br>
+        </div>
+        <div className="comments">
           <br></br>
-          <button onClick={() => this.props.history.push(`/home`)}>Home</button>
-          <br></br>
-          <button onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
-          <br></br>
+          <button className="homeProfileButton" onClick={() => this.props.history.push(`/home`)}>Home</button>
+          <button className="homeProfileButton" onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
           <br></br>
           <br></br>
           <br></br>
           <form onChange={this.handleChange}>
             <input value={this.state.title} name="title" placeholder="Title"/>
-            <textarea value={this.state.content} name="content" placeholder="Leave a Comment..." />
-            <button onClick={this.handleSubmit}>Submit</button>
+            <br></br>
+            <textarea value={this.state.content} name="content" rows="6" cols="32" placeholder="Leave a Comment..." />
+            <br></br>
+            <button className="homeProfileButton" onClick={this.handleSubmit}>Submit</button>
           </form>
-          <br></br>
           <br></br>
           <br></br>
           <h2>Comments</h2>
           <br></br>
           {comments}
         </div>
+      </div>
       )
     }
 
