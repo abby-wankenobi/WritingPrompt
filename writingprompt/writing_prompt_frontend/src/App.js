@@ -48,6 +48,13 @@ class App extends Component {
         <Route exact path="/prompts" component={PromptsPage} />
         <Route exact path="/stories" component={StoriesPage} />
       </div>
+      <br></br>
+      <div className="Footer">
+        <p>
+          &copy; 2018 Abigail Swarth
+        </p>
+      </div>
+
 
     </div>
     );

@@ -52,8 +52,9 @@ a {
 }
 
 .HomePage {
-  padding-top: 80px;
+  padding-top: 30px;
   padding-left: 60px;
+  text-align: center;
 }
 
 .StoriesPage {
@@ -62,10 +63,75 @@ a {
 }
 
 .PromptsPage {
-  padding-top: 80px;
+  padding-top: 40px;
   padding-left: 60px;
+  text-align: center;
+  font-family: "Didot", serif;
 }
 
+.aboutHome {
+  font-family: "Didot", serif;
+}
+
+.Footer {
+    font-family: "Didot", serif;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding-left: 53px
+}
+
+.homebutton {
+    font-family: "Didot", serif;
+    background-color: white;
+    border: double;
+    color: black;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 8px;
+}
+
+.genreSelect {
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  height: 34px;
+  width: 120px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+
+.sortSelect {
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  height: 34px;
+  width: 120px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+
+.promptContainer {
+  display:block;
+  margin: 0 auto;
+  width: 800px;
+}
 
 /*======================================================
                           Navbar
@@ -74,8 +140,8 @@ a {
   background: white;
   color: rgb(13, 26, 38);
   position: fixed;
-  top: 0;
-  height: 60px;
+  top: 0px;
+  height: 80px;
   line-height: 60px;
   width: 100vw;
   z-index: 10;
@@ -84,10 +150,10 @@ a {
 .nav-wrapper {
   margin: auto;
   text-align: center;
-  width: 70%;
+  width: 50%;
 } @media(max-width: 768px) {
     .nav-wrapper {
-      width: 90%;
+      width: 50%;
     }
   } @media(max-width: 638px) {
       .nav-wrapper {
@@ -99,10 +165,12 @@ a {
 .logo {
   float: left;
   margin-left: 28px;
-  font-size: 1.5em;
+  font-size: 1.9em;
+  font-weight: bold;
   height: 60px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  font-family: "Didot", serif;
 } @media(max-width: 768px) {
     .logo {
 /*       margin-left: 5px; */
@@ -135,7 +203,8 @@ a {
 #navbar li a {
   color: rgb(13, 26, 38);
   display: block;
-  font-size: 0.7em;
+  font-size: 1.1em;
+  font-family: "Didot", serif;
   height: 50px;
   letter-spacing: 1px;
   margin: 0 20px;

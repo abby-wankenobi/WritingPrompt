@@ -106,21 +106,26 @@ class PromptsPage extends React.Component {
       <div className="PromptsPage">
         <h1>Prompts</h1>
         <br></br>
-        <select onChange={this.handleChange}>
-          <option value="All Genres">All Genres</option>
-          {genres}
-        </select>
-        <select onChange={this.handleFilterChange}>
-          <option value="Newest">Newest</option>
-          <option value="Oldest">Oldest</option>
-          <option value="Most Popular">Most Popular</option>
-          <option value="Least Popular">Least Popular</option>
-        </select>
+        <div className="genreSelect">
+          <select onChange={this.handleChange}>
+            <option value="All Genres">All Genres</option>
+            {genres}
+          </select>
+        </div>
+        <br></br>
+        <div className="sortSelect">
+          <select onChange={this.handleFilterChange}>
+            <option value="Newest">Newest</option>
+            <option value="Oldest">Oldest</option>
+            <option value="Most Popular">Most Popular</option>
+            <option value="Least Popular">Least Popular</option>
+          </select>
+        </div>
         <br></br>
         <br></br>
-        <ul>
+        <div>
           {selectedPrompts}
-        </ul>
+        </div>
       </div>
     )
   }
