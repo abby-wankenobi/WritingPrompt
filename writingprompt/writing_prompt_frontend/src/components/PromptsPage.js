@@ -107,7 +107,8 @@ class PromptsPage extends React.Component {
         <p className="pageHeader">Prompts</p>
           <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
         <br></br>
-        <br></br>        <div className="genreSelect">
+        <br></br>
+        <div className="genreSelect">
           <select onChange={this.handleChange}>
             <option value="All Genres">All Genres</option>
             {genres}

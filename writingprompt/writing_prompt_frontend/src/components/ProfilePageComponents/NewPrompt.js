@@ -58,19 +58,27 @@ class NewPrompt extends React.Component {
 
 console.log(this.props.user)
     return(
-      <div className="NewStory">
-        <h3>Choose a Genre</h3>
-        <select onChange={this.handleChange}>
-          <option>Select Genre...</option>
-          {genres}
-        </select>
+      <div className="PromptsPage">
+        <p className="pageHeader">Choose a Genre</p>
+        <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+        <br></br>
+        <br></br>
+        <div className="genreSelect">
+          <select onChange={this.handleChange}>
+            <option>Select Genre...</option>
+            {genres}
+          </select>
+        </div>
+        <br></br>
+        <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+        <br></br>
         <br></br>
         <form onChange={this.handleTextChange}>
-          <textarea name="content" placeholder="New Prompt..." rows="30" cols="50"/>
+          <textarea className="inputfield" name="content" placeholder="New Prompt..." rows="30" cols="50"/>
           <br></br>
-          <button onClick={this.handleSubmit}>Save Prompt</button>
+          <button className="likebutton" onClick={this.handleSubmit}>Save Prompt</button>
           <br></br>
-          <button onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
+          <button className="likebutton" onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
         </form>
       </div>
     )

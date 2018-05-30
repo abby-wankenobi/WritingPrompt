@@ -46,6 +46,7 @@ class PromptsController < ApplicationController
   # DELETE /prompts/1
   # DELETE /prompts/1.json
   def destroy
+    @prompt.promptlikes.destroy_all
     @prompt.destroy
   end
 

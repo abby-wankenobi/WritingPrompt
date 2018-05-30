@@ -47,11 +47,12 @@ console.log(this.props)
     return(
       <div className="NewStory">
         <form onChange={this.handleTextChange}>
-          <input name="title" placeholder="Title" />
+          <input className="storytitle" name="title" placeholder=" Title" />
           <br></br>
-          <textarea name="content" placeholder="Story" rows="30" cols="50"/>
+          <textarea className="inputfield" name="content" placeholder=" Write your story..." rows="30" cols="50"/>
           <br></br>
           <button onClick={this.handleSubmit} className="likebutton">Save Story</button>
+          <br></br>
           <br></br>
         </form>
       </div>

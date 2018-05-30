@@ -78,24 +78,32 @@ class NewStory extends React.Component {
 
 console.log(this.props)
     return(
-      <div className="NewStory">
-        <h3>Choose a Prompt</h3>
-        <br></br>
-        <select onChange={this.handleChange}>
-          <option value="nothing">Select a Genre...</option>
-          {genres}
-        </select>
+      <div className="PromptsPage">
+        <p className="pageHeader">Choose a Prompt</p>
+        <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
         <br></br>
         <br></br>
-        <h5>Or Get A Random Prompt</h5>
-        <button onClick={this.handleClick}>Random Prompt</button>
+        <div className="genreSelect">
+          <select onChange={this.handleChange}>
+            <option value="nothing">Select a Genre...</option>
+            {genres}
+          </select>
+        </div>
         <br></br>
         <br></br>
-        <h3>{this.state.prompt.content}</h3>
+        <h4>Or Get A Random Prompt</h4>
+        <button className="likebutton" onClick={this.handleClick}>Random Prompt</button>
+        <br></br>
+        <br></br>
+        <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+        <br></br>
+        <br></br>
+        <div className="promptcontent">{this.state.prompt.content}</div>
         <NewStoryForm history={this.props.history} prompt={this.state.prompt} />
+        <button className="likebutton" onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
         <br></br>
-        <button onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
-      </div>
+        <br></br>
+    </div>
     )
   }
 

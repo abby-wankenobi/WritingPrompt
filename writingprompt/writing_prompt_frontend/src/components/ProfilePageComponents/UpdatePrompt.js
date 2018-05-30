@@ -33,7 +33,7 @@ class UpdatePrompt extends React.Component {
         }
       })
     })
-    .then(r => this.props.history.push(`/users/${this.props.user.id}`))
+    .then(r => this.props.history.push(`/prompts/${this.props.prompt.id}`))
   }
 
   handleChange = (e) => {
@@ -52,7 +52,7 @@ class UpdatePrompt extends React.Component {
           <form onChange={this.handleChange}>
             <textarea rows="30" name="content" value={this.state.content} />
             <br></br>
-            <button className="likebutton" Click={this.updatePrompt}>Save</button>
+            <button className="likebutton" onClick={this.updatePrompt}>Save</button>
           </form>
         </div>
       )

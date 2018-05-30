@@ -44,6 +44,7 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
+    @story.storylikes.destroy_all
     @story.destroy
   end
 

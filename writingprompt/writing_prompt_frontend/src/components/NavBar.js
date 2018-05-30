@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {getUser, saveAuth, logout} from '../actions/auth_actions'
+import {getUserInfo} from '../actions/content_actions'
 
 class NavBar extends React.Component{
 
@@ -10,7 +11,7 @@ class NavBar extends React.Component{
         <nav id="navbar" className="">
           <div className="nav-wrapper">
             <div className="logo">
-              <a><i className="fas fa-chess-knight"></i>UNTITLED</a>
+              <a onClick={() => this.props.history.push('/home')}><i className="fas fa-chess-knight"></i>UNTITLED</a>
             </div>
 
             <ul id="menu">
@@ -27,7 +28,10 @@ class NavBar extends React.Component{
               }
               {
                 this.props.auth ?
-                <li><a onClick={() => this.props.history.push(`/users/${this.props.auth.user_id}`)}>Profile</a></li> :
+                <li><a onClick={() => {
+                    this.props.history.push(`/users/${this.props.auth.user_id}`)
+                    this.props.getUserInfo(this.props.auth.user_id)
+                    }}>Profile</a></li> :
                 null
               }
               {
@@ -107,4 +111,4 @@ function mapStateToProps(state){
   return {auth: state.mainReducer.auth}
 }
 
-export default connect(mapStateToProps, {getUser, saveAuth, logout})(NavBar)
+export default connect(mapStateToProps, {getUser, saveAuth, logout, getUserInfo})(NavBar)

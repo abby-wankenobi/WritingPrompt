@@ -15,7 +15,8 @@ class ProfilePage extends React.Component{
 
 
   componentWillMount(){
-    this.props.getUserInfo(this.props.auth.user_id)
+    console.log('stuff', this.props)
+    this.props.getUserInfo(this.props.match.params.id)
   }
 
   handleClick = (e) => {

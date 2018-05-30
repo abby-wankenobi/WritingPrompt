@@ -49,7 +49,7 @@
   border: 1px solid;
   border-radius: 8px;
   border: double;
-  margin-left: 750px;
+  margin-left: 725px;
 }
 
 .textfield {
@@ -63,6 +63,17 @@
   width: 100px;
   border-radius: 6px;
   height: 20px
+}
+
+.inputfield {
+  border-radius: 6px;
+  border: 1px solid black;
+}
+
+.storytitle {
+  border-radius: 6px;
+  border: 1px solid black;
+  width: 318px;
 }
 
 .ProfilePage {
@@ -113,7 +124,6 @@
 
 .NewStory {
   padding-top: 80px;
-  padding-left: 60px;
 }
 
 .eachStoryContainer {
@@ -305,7 +315,12 @@
   display: inline-block;
 }
 
-
+.promptcontent {
+  display: block;
+  margin: 0 auto;
+  font-weight: bold;
+  width: 800px;
+}
 
 /*======================================================
                           Navbar

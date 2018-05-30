@@ -27,7 +27,7 @@ class ShowStory extends React.Component {
       method: "DELETE",
       headers: {"Authorization": `Token token=${ this.props.user.token }`}
     })
-    .then(r => this.props.history.push(`/users/${this.props.user.id}`))
+    .then(r => this.props.history.push(`/users/${this.props.user.user_id}`))
   }
 
   handleChange = (e) => {
