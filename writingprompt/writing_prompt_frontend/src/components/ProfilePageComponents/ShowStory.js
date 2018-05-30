@@ -111,7 +111,7 @@ class ShowStory extends React.Component {
 
     let story
     if (this.props.story){
-      const comments = this.props.story.comments.map(comment => <Comments comment={comment} />)
+      const comments = this.props.story.comments.map(comment => <Comments history={this.props.history} comment={comment} />)
       story = (
       <div className="eachStoryContainer">
         <div className="eachStory">
@@ -122,7 +122,7 @@ class ShowStory extends React.Component {
             <br></br>
           <br></br>
           <p className="storyTitle">{this.props.story.title}</p>
-          <h5><a className="effect-underline" onClick={() => this.props.history.push(`/users/${this.props.story.user.id}`)}>By: {this.props.story.user.username}</a></h5>
+          <h5 onClick={() => this.props.history.push(`/users/${this.props.story.user.id}`)}>By: {this.props.story.user.username}</h5>
           <br></br>
           <p className="storyContent">{this.props.story.content}</p>
           <br></br>

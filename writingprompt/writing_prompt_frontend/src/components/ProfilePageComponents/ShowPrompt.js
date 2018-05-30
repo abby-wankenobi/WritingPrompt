@@ -71,11 +71,11 @@ class ShowPrompt extends React.Component {
     let promptLike = this.props.promptLikes.find(like => like.prompt_id === this.props.prompt.id)
     if (promptLike) {
           userLike = (
-            <button onClick={() => this.handleUnlike(promptLike.id)}>Unlike</button>
+            <button className="likebutton" onClick={() => this.handleUnlike(promptLike.id)}>Unlike</button>
           )
     } else {
           userLike = (
-            <button onClick={this.handleLike}>Like</button>
+            <button className="likebutton" onClick={this.handleLike}>Like</button>
           )
     }
   }
@@ -84,25 +84,33 @@ class ShowPrompt extends React.Component {
     if (this.props.prompt){
       prompt = (
         <div className="eachPrompt">
-          <h3>{this.props.prompt.content}</h3>
+          <br></br>
+          <img className="linebreak" src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="300px"></img>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h2>{this.props.prompt.content}</h2>
+          <br></br>
+          <h4>Genre: {this.props.prompt.genre.title}</h4>
           <br></br>
           {userLike}
           <br></br>
-          Prompt Likes: {this.props.prompt.likes.length}
+            <img src="https://i.pinimg.com/originals/23/1f/43/231f433738c1dd96e111b77b10e9b133.jpg" width="15px"></img>
+            <a>{this.props.prompt.likes.length}</a>
           <br></br>
-          { this.props.user ? <button onClick={this.handleClick}>Create New Story</button> : null }
-          <br></br>
-          { this.state.mode === "edit" ? <NewStoryForm history={this.props.history} prompt={this.props.prompt} /> : null}
-          <br></br>
-          { this.props.prompt.user && this.props.prompt.user.id === this.props.user.user_id ? <button onClick={() => this.props.history.push(`/prompts/${this.props.prompt.id}/edit`)}>Update</button> : null }
-          <br></br>
-          { this.props.prompt.user && this.props.prompt.user.id === this.props.user.user_id ? <button onClick={this.deletePrompt}>Delete</button> : null }
-          <br></br>
-          <br></br>
-          <button onClick={() => this.props.history.push(`/home`)}>Home</button>
-          <br></br>
-          <button onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
-        </div>
+            <br></br>
+            <img className="linebreak" src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="300px"></img>
+            <br></br>
+            <br></br>
+            <div className="promptButtons">
+              { this.props.prompt.user && this.props.prompt.user.id === this.props.user.user_id ? <button className="likebutton" onClick={() => this.props.history.push(`/prompts/${this.props.prompt.id}/edit`)}>Update</button> : null }
+              { this.props.prompt.user && this.props.prompt.user.id === this.props.user.user_id ? <button className="likebutton" onClick={this.deletePrompt}>Delete</button> : null }
+              <button className="likebutton" onClick={() => this.props.history.push(`/home`)}>Home</button>
+              <button className="likebutton" onClick={() => this.props.history.push(`/users/${this.props.user.user_id}`)}>Back to Profile</button>
+              { this.props.user ? <button className="likebutton" onClick={this.handleClick}>Create New Story</button> : null }
+              { this.state.mode === "edit" ? <NewStoryForm history={this.props.history} prompt={this.props.prompt} /> : null}
+            </div>
+          </div>
       )
     }
 

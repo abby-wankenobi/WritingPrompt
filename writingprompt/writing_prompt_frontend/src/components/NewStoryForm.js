@@ -51,7 +51,7 @@ console.log(this.props)
           <br></br>
           <textarea name="content" placeholder="Story" rows="30" cols="50"/>
           <br></br>
-          <button onClick={this.handleSubmit}>Save Story</button>
+          <button onClick={this.handleSubmit} className="likebutton">Save Story</button>
           <br></br>
         </form>
       </div>

@@ -104,7 +104,9 @@ class StoriesPage extends React.Component {
 
     return(
       <div className="PromptsPage">
-        <h1>Stories</h1>
+        <p className="pageHeader">Stories</p>
+          <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+        <br></br>
         <br></br>
         <div className="genreSelect">
           <select onChange={this.handleChange}>
@@ -121,6 +123,8 @@ class StoriesPage extends React.Component {
             <option value="Least Popular">Least Popular</option>
           </select>
         </div>
+        <br></br>
+        <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
         <br></br>
         <br></br>
         <div>

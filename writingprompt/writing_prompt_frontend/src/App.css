@@ -60,26 +60,15 @@
   padding-top: 60px;
 }
 
+.pageHeader {
+  font-weight: bold;
+  font-size: 50px;
+}
+
 .commentTitle {
   font-size: 20px;
   font-weight: bold;
   text-decoration: underline;
-}
-
-.effect-underline:after {
-	content: '';
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 100%;
-  border-bottom: 1px solid;
-  margin-top: 10px;
-  opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale(0,1);
-	transform: scale(0,1);
 }
 
 .EditStory {
@@ -95,6 +84,14 @@
 .eachPrompt {
   padding-top: 80px;
   padding-left: 60px;
+  font-family: "Didot", serif;
+  display: block;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.promptButtons {
+  text-align: center;
 }
 
 .HomePage {
@@ -194,7 +191,7 @@
 }
 
 .storyTitle {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   text-decoration: underline;
 }

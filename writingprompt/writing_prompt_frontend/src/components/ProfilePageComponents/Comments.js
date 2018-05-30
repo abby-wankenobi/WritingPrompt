@@ -10,7 +10,7 @@ class Comments extends React.Component{
         <p className="commentTitle">{this.props.comment.title}</p>
         <h4>{this.props.comment.content}</h4>
         <br></br>
-        <p size="5">-{this.props.comment.user.username}</p>
+        <p size="5" onClick={() => this.props.history.push(`/users/${this.props.comment.user.id}`)}>-{this.props.comment.user.username}</p>
           <br></br>
           <img className="linebreak" src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="100px"></img>
           <br></br>
