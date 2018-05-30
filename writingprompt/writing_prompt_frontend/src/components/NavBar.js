@@ -10,7 +10,7 @@ class NavBar extends React.Component{
         <nav id="navbar" className="">
           <div className="nav-wrapper">
             <div className="logo">
-              <a><i className="fas fa-chess-knight"></i>Title</a>
+              <a><i className="fas fa-chess-knight"></i>UNTITLED</a>
             </div>
 
             <ul id="menu">
@@ -44,7 +44,7 @@ class NavBar extends React.Component{
                 this.props.auth ?
                 <li><a onClick={()=>{
                     this.props.logout()
-                    this.props.history.push('/login')
+                    this.props.history.push('/home')
                   }}>Logout</a></li> :
                 null
               }

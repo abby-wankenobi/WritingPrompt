@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    data =  @users.map do |thing|
+      thing.allusercrap
+    end
+
+    render json: data
   end
 
   # GET /users/1

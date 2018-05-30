@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../actions/content_actions'
-import ProfileStory from './ProfileStory'
 import UserPrompt from './UserPrompt'
-
+import LikedStory from './LikedStory'
+import LikedPrompt from './LikedPrompt'
+import StoryComponent from '../StoryComponent'
+import PromptComponent from '../PromptComponent'
 
 class ProfilePage extends React.Component{
 
   state = {
-    divMode: "newsfeed"
+    divMode: "yourstories"
   }
 
 
@@ -35,10 +37,10 @@ class ProfilePage extends React.Component{
     if (this.props.user_info) {
       username = this.props.user_info.username
       bio = this.props.user_info.bio
-      userStories = this.props.user_info.stories.map(story => <ProfileStory history={this.props.history} story={story}/>)
-      userPrompts = this.props.user_info.prompts.map(prompt => <UserPrompt history={this.props.history} prompt={prompt} />)
-      likedStories = this.props.user_info.storylike.map(prompt => <UserPrompt history={this.props.history} prompt={prompt} />)
-      likedPrompts = this.props.user_info.promptlikes.map(like => <UserPrompt history={this.props.history} prompt={prompt} />)
+      userStories = this.props.user_info.stories.map(story => <StoryComponent history={this.props.history} story={story}/>)
+      userPrompts = this.props.user_info.prompts.map(prompt => <PromptComponent history={this.props.history} prompt={prompt} />)
+      likedStories = this.props.user_info.storylike.map(story => <StoryComponent history={this.props.history} story={story} />)
+      likedPrompts = this.props.user_info.promptlikes.map(prompt => <PromptComponent history={this.props.history} prompt={prompt} />)
     }
 
 
@@ -55,6 +57,12 @@ class ProfilePage extends React.Component{
       case "yourstories":
         mainDiv = (
           <div>
+            <div className="title">
+              <p className="pageHeader">Stories</p>
+              <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+            </div>
+            <br></br>
+            <br></br>
             {userStories}
           </div>
         )
@@ -62,6 +70,12 @@ class ProfilePage extends React.Component{
       case "yourprompts":
         mainDiv = (
           <div>
+            <div className="title">
+              <p className="pageHeader">Prompts</p>
+              <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+            </div>
+            <br></br>
+            <br></br>
             {userPrompts}
           </div>
         )
@@ -69,7 +83,12 @@ class ProfilePage extends React.Component{
       case "likedstories":
         mainDiv = (
           <div>
-            liked stories
+            <div className="title">
+              <p className="pageHeader">Liked Stories</p>
+              <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+            </div>
+            <br></br>
+            <br></br>
             {likedStories}
           </div>
         )
@@ -77,7 +96,12 @@ class ProfilePage extends React.Component{
       case "likedprompts":
         mainDiv = (
           <div>
-            liked prompts
+            <div className="title">
+              <p className="pageHeader">Liked Prompts</p>
+              <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+            </div>
+            <br></br>
+            <br></br>
             {likedPrompts}
           </div>
         )
@@ -86,30 +110,30 @@ class ProfilePage extends React.Component{
     console.log(this.props)
 
     return(
-      <div className="ProfilePage">
-        <div>
-          Username: {username}
+      <div className="ProfileContainer">
+        <div className="ProfilePage">
+          <p className="Username">{username}</p>
           <br></br>
-          Bio: {bio}
+          <p className="Bio">"{bio}"</p>
           <br></br>
-          { this.props.match.params.id == this.props.auth.user_id ? <button className="likebutton" history={this.props.history} onClick={() => this.props.history.push(`/newStory`)}>Create New Story</button> : null }
           <br></br>
-          { this.props.match.params.id == this.props.auth.user_id ? <button className="likebutton" history={this.props.history} onClick={() => this.props.history.push(`/newPrompt`)}>Create New Prompt</button> : null }
+          <br></br>
+          { this.props.match.params.id == this.props.auth.user_id ? <button className="ProfileButtons" history={this.props.history} onClick={() => this.props.history.push(`/newStory`)}>Create New Story</button> : null }
+          <br></br>
+          { this.props.match.params.id == this.props.auth.user_id ? <button className="ProfileButtons" history={this.props.history} onClick={() => this.props.history.push(`/newPrompt`)}>Create New Prompt</button> : null }
+          <br></br>
+          <button name="yourstories" className="ProfileButtons" onClick={this.handleClick}>Stories</button>
+          <br></br>
+          <button name="yourprompts" className="ProfileButtons" onClick={this.handleClick}>Prompts</button>
+          <br></br>
+          <button name="likedstories" className="ProfileButtons" onClick={this.handleClick}>Liked Stories</button>
+          <br></br>
+          <button name="likedprompts" className="ProfileButtons" onClick={this.handleClick}>Liked Prompts</button>
+          <br></br>
+          <button name="newsfeed" className="ProfileButtons" onClick={this.handleClick}>News Feed</button>
         </div>
 
-        <div>
-          <button name="yourstories" className="likebutton" onClick={this.handleClick}>Your Stories</button>
-          <br></br>
-          <button name="yourprompts" className="likebutton" onClick={this.handleClick}>Your Prompts</button>
-          <br></br>
-          <button name="likedstories" className="likebutton" onClick={this.handleClick}>Liked Stories</button>
-          <br></br>
-          <button name="likedprompts" className="likebutton" onClick={this.handleClick}>Liked Prompts</button>
-          <br></br>
-          <button name="newsfeed" className="likebutton" onClick={this.handleClick}>News Feed</button>
-        </div>
-
-       <div>
+       <div className="ProfileDivPage">
          {mainDiv}
        </div>
 

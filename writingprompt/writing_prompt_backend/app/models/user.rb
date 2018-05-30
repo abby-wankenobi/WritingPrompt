@@ -10,21 +10,33 @@ class User < ApplicationRecord
   def allusercrap
     storylikes = self.storylikes.map do |like|
       {
-        story_id: like.story_id,
-        title: like.story.title
+        id: like.story_id,
+        title: like.story.title,
+        content: like.story.content,
+        likes: like.story.storylikes
       }
     end
 
     promptlikes = self.promptlikes.map do |like|
       {
-        prompt_id: like.prompt_id,
-        content: like.prompt.content
+        id: like.prompt_id,
+        content: like.prompt.content,
+        likes: like.prompt.promptlikes,
       }
     end
+
+    story = self.stories.map do |story|
+      story.serialized_data
+    end
+
+    prompt = self.prompts.map do |prompt|
+      prompt.serialized_data
+    end
+
     {
       username: self.username,
-      stories: self.stories,
-      prompts: self.prompts,
+      stories: story,
+      prompts: prompt,
       bio: self.bio,
       storylike: storylikes,
       promptlikes: promptlikes

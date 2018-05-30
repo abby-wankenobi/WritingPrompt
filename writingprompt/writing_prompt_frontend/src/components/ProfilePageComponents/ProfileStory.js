@@ -3,6 +3,7 @@ import React from 'react';
 class ProfileStory extends React.Component {
 
   render(){
+
     return(
       <div onClick={() => this.props.history.push(`/stories/${this.props.story.id}`)}>
         <br></br>
