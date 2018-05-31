@@ -47,12 +47,16 @@ class UpdatePrompt extends React.Component {
     let prompt
     if (this.props.prompt){
       prompt = (
-        <div className="EditStory">
+        <div className="PromptsPage">
+          <br></br>
+          <br></br>
+            <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+          <br></br>
           <br></br>
           <form onChange={this.handleChange}>
-            <textarea rows="30" name="content" value={this.state.content} />
+            <textarea className="inputfield" rows="30" cols="50" name="content" value={this.state.content} />
             <br></br>
-            <button className="likebutton" onClick={this.updatePrompt}>Save</button>
+            <button className="likebutton" onClick={this.updatePrompt}>Update</button>
           </form>
         </div>
       )

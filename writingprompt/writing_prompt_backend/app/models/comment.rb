@@ -13,7 +13,7 @@ class Comment < ApplicationRecord
       title: self.title,
       created_at: self.created_at,
       updated_at: self.updated_at,
-      user: self.user.username
+      user: self.user
     }
   end
 end

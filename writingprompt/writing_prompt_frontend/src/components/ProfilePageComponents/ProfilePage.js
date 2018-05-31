@@ -131,7 +131,6 @@ class ProfilePage extends React.Component{
           <br></br>
           <button name="likedprompts" className="ProfileButtons" onClick={this.handleClick}>Liked Prompts</button>
           <br></br>
-          <button name="newsfeed" className="ProfileButtons" onClick={this.handleClick}>News Feed</button>
         </div>
 
        <div className="ProfileDivPage">

@@ -50,15 +50,19 @@ class UpdateStory extends React.Component {
     let story
     if (this.props.story){
       story = (
-        <div className="EditStory">
-          <h3>{this.props.story.prompt.content}</h3>
+        <div className="PromptsPage">
+          <h3 className="eachPrompt">{this.props.story.prompt.content}</h3>
+          <br></br>
+          <br></br>
+            <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
+          <br></br>
           <br></br>
           <form onChange={this.handleChange}>
-            <input name="title" value={this.state.title} />
+            <input className="storytitle" name="title" value={this.state.title} />
             <br></br>
-            <textarea rows="30" name="content" value={this.state.content} />
+            <textarea className="inputfield" rows="30" cols="50" name="content" value={this.state.content} />
             <br></br>
-            <button onClick={this.updateStory}>Save</button>
+            <button className="likebutton" onClick={this.updateStory}>Update</button>
           </form>
         </div>
       )

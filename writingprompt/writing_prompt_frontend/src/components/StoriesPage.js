@@ -17,6 +17,16 @@ class StoriesPage extends React.Component {
       this.setState({
         stories: this.props.stories
       })
+      let newFilter = this.state.stories.sort(function(a, b){
+        var keyA = new Date(a.created_at),
+            keyB = new Date(b.created_at);
+          if(keyA < keyB) return 1;
+          if(keyA > keyB) return -1;
+          return 0
+      });
+      this.setState({
+        stories: newFilter
+      })
     })
     this.props.getGenres()
   }
@@ -45,8 +55,8 @@ class StoriesPage extends React.Component {
       let newFilter = this.state.stories.sort(function(a, b){
         var keyA = new Date(a.created_at),
             keyB = new Date(b.created_at);
-          if(keyA < keyB) return -1;
-          if(keyA > keyB) return 1;
+          if(keyA < keyB) return 1;
+          if(keyA > keyB) return -1;
           return 0
       });
       this.setState({
@@ -59,8 +69,8 @@ class StoriesPage extends React.Component {
       let newFilter = this.state.stories.sort(function(a, b){
         var keyA = new Date(a.created_at),
             keyB = new Date(b.created_at);
-          if(keyA < keyB) return 1;
-          if(keyA > keyB) return -1;
+          if(keyA < keyB) return -1;
+          if(keyA > keyB) return 1;
           return 0
       });
       this.setState({
