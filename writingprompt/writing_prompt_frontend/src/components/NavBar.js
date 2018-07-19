@@ -8,7 +8,7 @@ class NavBar extends React.Component{
   render(){
     return (
       <div className="navbar-stuff">
-        <nav id="navbar" className="">
+        <nav id="navbar">
           <div className="nav-wrapper">
             <div className="logo">
               <a onClick={() => this.props.history.push('/home')}><i className="fas fa-chess-knight"></i>UNTITLED</a>

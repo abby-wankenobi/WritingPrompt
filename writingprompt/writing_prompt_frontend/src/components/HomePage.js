@@ -8,7 +8,7 @@ class HomePage extends React.Component {
   render(){
     return(
       <div className="HomePage">
-        <img src={typewriteredit} width="550px"></img>
+        <img src={typewriteredit} width="450px"></img>
         <br></br>
         <div className="aboutHome">
           <br></br>
