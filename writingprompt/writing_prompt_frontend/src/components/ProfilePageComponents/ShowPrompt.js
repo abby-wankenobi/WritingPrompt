@@ -6,7 +6,7 @@ import NewStoryForm from '../NewStoryForm'
 class ShowPrompt extends React.Component {
 
   state = {
-    url: `https://wp-backend.herokuapp.com//prompts/${this.props.match.params.id}`,
+    url: `http://localhost:3000/prompts/${this.props.match.params.id}`,
     mode: "show",
     promptlike: "like"
   }
@@ -37,7 +37,7 @@ class ShowPrompt extends React.Component {
 
   handleLike = (e) => {
     e.preventDefault()
-    fetch(`https://wp-backend.herokuapp.com//promptlikes`, {
+    fetch(`http://localhost:3000/promptlikes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ class ShowPrompt extends React.Component {
   }
 
   handleUnlike = (id) => {
-    fetch(`https://wp-backend.herokuapp.com//promptlikes/${id}`, {
+    fetch(`http://localhost:3000/promptlikes/${id}`, {
       method: "DELETE",
       headers: {"Authorization": `Token token=${ this.props.user.token }`}
     })

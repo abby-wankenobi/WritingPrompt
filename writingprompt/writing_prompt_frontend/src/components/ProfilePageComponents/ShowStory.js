@@ -6,7 +6,7 @@ import Comments from './Comments'
 class ShowStory extends React.Component {
 
   state = {
-    url: `https://wp-backend.herokuapp.com//stories/${this.props.match.params.id}`,
+    url: `http://localhost:3000/stories/${this.props.match.params.id}`,
     title: "",
     content: "",
     storylike: "like"
@@ -38,7 +38,7 @@ class ShowStory extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch("https://wp-backend.herokuapp.com//comments", {
+    fetch("http://localhost:3000/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -64,7 +64,7 @@ class ShowStory extends React.Component {
 
   handleLike = (e) => {
     e.preventDefault()
-    fetch(`https://wp-backend.herokuapp.com//storylikes`, {
+    fetch(`http://localhost:3000/storylikes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ class ShowStory extends React.Component {
   }
 
   handleUnlike = (id) => {
-    fetch(`https://wp-backend.herokuapp.com//storylikes/${id}`, {
+    fetch(`http://localhost:3000/storylikes/${id}`, {
       method: "DELETE",
       headers: {"Authorization": `Token token=${ this.props.user.token }`}
     })

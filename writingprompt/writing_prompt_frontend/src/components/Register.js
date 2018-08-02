@@ -29,7 +29,7 @@ class Register extends React.Component {
 
   // handleSubmit = (e) => {
   //   e.preventDefault()
-  //   fetch('https://wp-backend.herokuapp.com//users', {
+  //   fetch('http://localhost:3000/users', {
   //     method: "POST",
   //     headers: {
   //       'Content-Type': 'application/json'

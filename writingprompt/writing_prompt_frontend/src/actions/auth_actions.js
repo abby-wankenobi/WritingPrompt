@@ -1,4 +1,4 @@
-const API_URL = "https://wp-backend.herokuapp.com/"
+const API_URL = "http://localhost:3000"
 const headers = {
   "Content-Type": "application/json"
 }

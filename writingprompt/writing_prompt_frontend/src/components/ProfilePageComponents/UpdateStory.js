@@ -5,7 +5,7 @@ import { setStory } from '../../actions/content_actions'
 class UpdateStory extends React.Component {
 
   state = {
-    url: `https://wp-backend.herokuapp.com//stories/${this.props.match.params.id}`,
+    url: `http://localhost:3000/stories/${this.props.match.params.id}`,
     title: "",
     content: ""
   }

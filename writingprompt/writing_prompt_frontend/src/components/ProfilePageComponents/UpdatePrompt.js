@@ -5,7 +5,7 @@ import { setStory } from '../../actions/content_actions'
 class UpdatePrompt extends React.Component {
 
   state = {
-    url: `https://wp-backend.herokuapp.com//prompts/${this.props.match.params.id}`,
+    url: `http://localhost:3000/prompts/${this.props.match.params.id}`,
     content: ""
   }
 

@@ -27,7 +27,7 @@ class NewPrompt extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch("https://wp-backend.herokuapp.com//prompts", {
+    fetch("http://localhost:3000/prompts", {
       method: "POST",
       headers: {
         "Authorization": `Token token=${ this.props.user.token }`,

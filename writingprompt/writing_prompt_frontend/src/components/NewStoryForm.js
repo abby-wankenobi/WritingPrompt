@@ -18,7 +18,7 @@ class NewStoryForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch("https://wp-backend.herokuapp.com//stories", {
+    fetch("http://localhost:3000/stories", {
       method: "POST",
       headers: {
         "Authorization": `Token token=${ this.props.user.token }`,
