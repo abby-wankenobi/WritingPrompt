@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     render json: @user.allusercrap
   end
 
-  # POST /users
+  # POST /users   
   # POST /users.json
   def create
     @user = User.new(user_params)
