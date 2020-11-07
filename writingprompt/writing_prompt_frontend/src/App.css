@@ -205,8 +205,11 @@
 
 .HomePage {
   padding-top: 0px;
-  padding-left: 60px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .StoriesPage {
@@ -227,14 +230,14 @@
 
 .Footer {
     font-family: "Didot", serif;
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: white;
     color: black;
-    text-align: center;
-    padding-left: 53px
+    display: flex;
+    justify-content: center;
 }
 
 .homebutton {

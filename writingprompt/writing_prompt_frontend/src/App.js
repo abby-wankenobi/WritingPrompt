@@ -37,6 +37,7 @@ class App extends Component {
       <div className="routes">
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
+        <Route path="/" component={HomePage}/>
         <Route path="/home" component={HomePage}/>
         <Route path="/users/:id" component={ProfilePage} />
         <Route path="/newstory" component={NewStory} />
@@ -51,7 +52,7 @@ class App extends Component {
       <br></br>
       <div className="Footer">
         <p>
-          &copy; 2018 Abigail Swarth
+          &copy; 2020 Abigail Swarth
         </p>
       </div>
 
