@@ -6,13 +6,14 @@ import NewStoryForm from '../NewStoryForm'
 class ShowPrompt extends React.Component {
 
   state = {
-    url: `http://localhost:3000/prompts/${this.props.match.params.id}`,
+    url: `https://wp-backend.herokuapp.com/prompts/${this.props.match.params.id}`,
     mode: "show",
     promptlike: "like"
   }
 
-
   componentDidMount() {
+      console.log( 'USER', this.props.user )
+
     fetch(this.state.url)
     .then(res => res.json())
     .then(prompt => {
@@ -37,7 +38,7 @@ class ShowPrompt extends React.Component {
 
   handleLike = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/promptlikes`, {
+    fetch(`https://wp-backend.herokuapp.com/promptlikes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +56,7 @@ class ShowPrompt extends React.Component {
   }
 
   handleUnlike = (id) => {
-    fetch(`http://localhost:3000/promptlikes/${id}`, {
+    fetch(`https://wp-backend.herokuapp.com/promptlikes/${id}`, {
       method: "DELETE",
       headers: {"Authorization": `Token token=${ this.props.user.token }`}
     })
@@ -68,7 +69,7 @@ class ShowPrompt extends React.Component {
 
   let userLike
   if (this.props.prompt && this.props.user){
-    let promptLike = this.props.promptLikes.find(like => like.prompt_id === this.props.prompt.id)
+    let promptLike = this.props.promptLikes && this.props.promptLikes.find(like => like.prompt_id === this.props.prompt.id)
     if (promptLike) {
           userLike = (
             <button className="likebutton" onClick={() => this.handleUnlike(promptLike.id)}>Unlike</button>

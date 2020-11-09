@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000"
+const API_URL = "https://wp-backend.herokuapp.com"
 
 
 export function getPrompts(){
@@ -14,10 +14,14 @@ export function getPrompts(){
 export function getUserInfo(id){
   return (dispatch) => {
     return fetch(API_URL + `/users/${id}`)
-    .then(res => res.json())
+    .then(res => {
+        if( res.ok ) res.json();
+        else throw new  Error('Something went wrong');
+    })
     .then(user => {
       dispatch({type: "USER_INFO", payload: user})
     })
+    .catch( error => console.log(error))
   }
 }
 
@@ -34,10 +38,14 @@ export function getGenres(){
 export function getStories(){
   return (dispatch) => {
     return fetch(API_URL + "/stories")
-    .then(res => res.json())
+    .then(res => {
+        if( res.ok ) res.json();
+        else throw new  Error('Something went wrong');
+    })
     .then(stories => {
       dispatch({type: "GET_STORIES", payload: stories})
     })
+    .catch( error => console.log(error))
   }
 }
 
@@ -46,10 +54,14 @@ export function getLikes(auth){
     return fetch(API_URL + "/storylikes", {
       headers: {"Authorization": `Token token=${ auth.token }`}
     })
-    .then(r => r.json())
+    .then(res => {
+        if( res.ok ) res.json();
+        else throw new  Error('Something went wrong');
+    })
     .then(storylikes => {
       dispatch({type: "SET_LIKES", payload: storylikes})
     })
+    .catch( error => console.log(error))
   }
 }
 
@@ -58,10 +70,14 @@ export function getPromptLikes(auth){
     return fetch(API_URL + "/promptlikes", {
       headers: {"Authorization": `Token token=${ auth.token }`}
     })
-    .then(r => r.json())
+    .then(res => {
+        if( res.ok ) res.json();
+        else throw new  Error('Something went wrong');
+    })
     .then(promptlike => {
       dispatch({type: "SET_PROMPTLIKES", payload: promptlike})
     })
+    .catch( error => console.log(error))
   }
 }
 

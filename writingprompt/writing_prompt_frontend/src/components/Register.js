@@ -21,7 +21,7 @@ class Register extends React.Component {
     e.preventDefault()
     if (this.state.password === this.state.passwordConfirmation){
       this.props.setAuth(this.state.username, this.state.password, this.state.bio)
-      .then(() => this.props.history.push("/home"))
+      .then(() => this.props.history.push("/"))
     } else {
       alert("Nope")
     }
@@ -29,7 +29,7 @@ class Register extends React.Component {
 
   // handleSubmit = (e) => {
   //   e.preventDefault()
-  //   fetch('http://localhost:3000/users', {
+  //   fetch('https://wp-backend.herokuapp.com/users', {
   //     method: "POST",
   //     headers: {
   //       'Content-Type': 'application/json'
@@ -51,17 +51,10 @@ class Register extends React.Component {
       <div className="register">
         <form onChange={this.handleChange}>
           <label>Register</label>
-          <br></br>
-          <br></br>
           <input className="input" value={this.state.username} name="username" placeholder="Username" />
-          <br></br>
           <input className="input" type="password" value={this.state.password} name="password" placeholder="Password" />
-          <br></br>
           <input className="input" type="password" value={this.state.passwordConfirmation} name="passwordConfirmation" placeholder="Confirm password"/>
-          <br></br>
           <textarea rows="10" cols="13" className="textfield" value={this.state.bio} name="bio" placeholder="Bio"/>
-          <br></br>
-          <br></br>
           <button className="likebutton" onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>

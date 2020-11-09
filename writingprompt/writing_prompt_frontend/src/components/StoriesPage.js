@@ -17,7 +17,7 @@ class StoriesPage extends React.Component {
       this.setState({
         stories: this.props.stories
       })
-      let newFilter = this.state.stories.sort(function(a, b){
+      let newFilter = this.state.stories && this.state.stories.sort(function(a, b){
         var keyA = new Date(a.created_at),
             keyB = new Date(b.created_at);
           if(keyA < keyB) return 1;
@@ -116,16 +116,13 @@ class StoriesPage extends React.Component {
       <div className="PromptsPage">
         <p className="pageHeader">Stories</p>
           <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
-        <br></br>
-        <br></br>
-        <div className="genreSelect">
+        <div className="selector">
           <select onChange={this.handleChange}>
             <option value="All Genres">All Genres</option>
             {genres}
           </select>
         </div>
-        <br></br>
-        <div className="sortSelect">
+        <div className="selector">
           <select onChange={this.handleFilterChange}>
             <option value="Newest">Newest</option>
             <option value="Oldest">Oldest</option>
@@ -133,12 +130,11 @@ class StoriesPage extends React.Component {
             <option value="Least Popular">Least Popular</option>
           </select>
         </div>
-        <br></br>
         <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
-        <br></br>
-        <br></br>
-        <div>
-          {allStories}
+        <div className="promptsOuterContainer">
+            <div className="promptsContainer">
+                {allStories}
+            </div>
         </div>
       </div>
     )

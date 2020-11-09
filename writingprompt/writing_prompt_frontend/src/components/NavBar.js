@@ -11,11 +11,11 @@ class NavBar extends React.Component{
         <nav id="navbar">
           <div className="nav-wrapper">
             <div className="logo">
-              <a onClick={() => this.props.history.push('/home')}><i className="fas fa-chess-knight"></i>UNTITLED</a>
+              <a onClick={() => this.props.history.push('/')}><i className="fas fa-chess-knight"></i>UNTITLED</a>
             </div>
 
             <ul id="menu">
-              <li><a onClick={() => this.props.history.push('/home')}>Home</a></li>
+              {/*<li><a onClick={() => this.props.history.push('/')}>Home</a></li>
               {
                 this.props.auth ?
                 <li><a onClick={() => this.props.history.push('/prompts')}>Prompts</a></li> :
@@ -51,16 +51,16 @@ class NavBar extends React.Component{
                     this.props.history.push('/home')
                   }}>Logout</a></li> :
                 null
-              }
+              }*/}
             </ul>
           </div>
         </nav>
 
 
-        <div className="menuIcon">
+        {/*<div className="menuIcon">
           <span className="icon icon-bars"></span>
           <span className="icon icon-bars overlay"></span>
-        </div>
+        </div>*/}
 
 
         <div className="overlay-menu">

@@ -20,7 +20,7 @@ class Login extends React.Component {
     this.props.login(this.state.username, this.state.password)
     .then(() =>
       {if (localStorage.auth){
-        this.props.history.push("/home")
+        this.props.history.push("/")
       } else {
         this.props.history.push("/login")
       }}
@@ -32,15 +32,12 @@ class Login extends React.Component {
       <div className="login">
         <form>
           <label>Login</label>
-          <br></br>
-          <br></br>
           <input className="input"
                  name="username"
                  value={this.state.username}
                  onChange={this.handleChange}
                  placeholder="Username">
                </input>
-               <br></br>
            <input className="input"
                   type="password"
                   name="password"
@@ -48,8 +45,6 @@ class Login extends React.Component {
                   value={this.state.password}
                   placeholder="Password">
                 </input>
-                <br></br>
-                <br></br>
             <button onClick={this.handleSubmit} className="likebutton">Login</button>
         </form>
       </div>

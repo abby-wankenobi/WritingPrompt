@@ -27,7 +27,7 @@ class NewPrompt extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch("http://localhost:3000/prompts", {
+    fetch("https://wp-backend.herokuapp.com/prompts", {
       method: "POST",
       headers: {
         "Authorization": `Token token=${ this.props.user.token }`,
@@ -63,7 +63,7 @@ console.log(this.props.user)
         <img src="https://cdn.website.thryv.com/df067c1490014b358cb79c081e2821cb/DESKTOP/png/488.png" width="200px"></img>
         <br></br>
         <br></br>
-        <div className="genreSelect">
+        <div className="selector">
           <select onChange={this.handleChange}>
             <option>Select Genre...</option>
             {genres}
