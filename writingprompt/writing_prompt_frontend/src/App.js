@@ -49,11 +49,11 @@ class App extends Component {
             <Route exact path="/stories" component={StoriesPage} />
           </div>
           <div className="Footer">
-            <img src="me.png" alt="portfolio" href="http://www.abigailswarth.com/" target="_blank" height="28px" />
-            <img src="github.png" alt="github" href="https://github.com/abby-wankenobi" target="_blank" height="28px" />
-            <img src="instagram.png" alt="instagram" href="https://www.instagram.com/abbywan.kenobi/" target="_blank" height="28px" />
-            <img src="linkedin.png" alt="linkedin" href="https://www.linkedin.com/in/abigailswarth/" target="_blank" height="28px" />
-            <img src="pinterest.png" alt="pinterest" href="https://www.pinterest.com/abigailswarth/" target="_blank" height="28px" />
+            <a href="http://www.abigailswarth.com/" target="_blank"><img src="me.png" alt="portfolio" height="28px" /></a>
+            <a href="https://github.com/abby-wankenobi" target="_blank"><img src="github.png" alt="github" height="28px" /></a>
+            <a href="https://www.instagram.com/abbywan.kenobi/" target="_blank"><img src="instagram.png" alt="instagram" height="28px" /></a>
+            <a href="https://www.linkedin.com/in/abigailswarth/" target="_blank"><img src="linkedin.png" alt="linkedin" height="28px" /></a>
+            <a href="https://www.pinterest.com/abigailswarth/" target="_blank"><img src="pinterest.png" alt="pinterest" height="28px" /></a>
           </div>
       </div>
     </div>
